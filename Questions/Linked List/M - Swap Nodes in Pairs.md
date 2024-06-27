@@ -29,3 +29,5 @@ struct ListNode* swapPairs(struct ListNode* head) {
     return dummyNode->next;
 }
 ```
+
+Dummy node created when we need to keep track of a previous node...
