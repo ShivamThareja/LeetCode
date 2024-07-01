@@ -1,5 +1,28 @@
 https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/description/
 
+Without stacks
+```C
+int minAddToMakeValid(char* s) {
+    int count = 0;
+    int ans = 0;
+    char c;
+    for(int i = 0; (c = s[i]) != '\0'; i++){
+        if(c == '(') count++;
+        if(c == ')') count--;
+
+        if(count < 0){
+            ans += abs(count);
+            count = 0;
+        }
+    }
+    ans = count > 0 ? ans + count : ans;
+    return ans;
+}
+```
+The logic is as soon as the count of ) exceeds count of (, there is no way the extra ) is gonna get nullified, so add count. But when we have extra (, there is a possibility to nullify them if there are future ), therefore, we handle extra ) while in loop, and extra ( when the loop is finished.
+
+
+With stacks
 ```C
 typedef struct Node {
     char val;
