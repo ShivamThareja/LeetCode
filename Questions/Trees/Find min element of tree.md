@@ -3,10 +3,16 @@ int min(NODE *root) {
   if (root == NULL) {
     return 9999999;
   }
-  int val = root->val;
-  int rightmin = min(root->right);
-  int leftmin = min(root->left);
+  int rightmin = root->val;
+  int leftmin = root->val;
+  int rootval = root->val;
+  if(root->right != NULL){
+	  rightmin = min(root->right);
+  }
+  if(root->left != NULL){
+	  leftmin = min(root->left);
+  }
   int min = leftmin < rightmin ? leftmin : rightmin;
-  return val < min ? val : min;
+  return rootval < min ? rootval : min;
 }
 ```
